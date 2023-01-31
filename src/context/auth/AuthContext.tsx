@@ -3,7 +3,7 @@ import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 import { auth, realtime } from "@/firebase";
 import { updateProfile, User } from "firebase/auth";
 import { useRealtimeUser } from "@/hooks/realtime/useRealtimeUser";
-import { onDisconnect, ref, set } from "firebase/database";
+import { onDisconnect, ref, set, update } from "firebase/database";
 import { firstName } from "faker-en/person/firstName";
 import { getDefaultPhotoURL } from "@/utils/user/getDefaultPhotoURL";
 
@@ -47,6 +47,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   ) as AuthContextValue;
 
   useEffect(() => {
+    auth.beforeAuthStateChanged(async (nextUser) => {
+      if (!nextUser && auth.currentUser) {
+        const Ref = ref(realtime, "/user/" + auth.currentUser.uid);
+        await update(Ref, { active: false });
+      }
+    });
+
     auth.onAuthStateChanged(async (nextUser) => {
       if (!nextUser) {
         setAuthUser(null);

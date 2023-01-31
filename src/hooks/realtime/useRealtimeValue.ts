@@ -13,6 +13,7 @@ export const useRealtimeValue = <DataType>(
 
   useEffect(() => {
     if (options?.skip) {
+      setValue(null);
       return;
     }
 
