@@ -6,6 +6,8 @@ import { signInAnonymously, signOut } from "@firebase/auth";
 import { auth } from "@/firebase";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth/AuthContext";
+import { Button } from "@/components/button/Button";
+import { Flexbox } from "@/components/flexbox/Flexbox";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +19,15 @@ export default function Home() {
   };
 
   return (
-    <>
+    <Flexbox direction={"column"}>
       <pre>{JSON.stringify(user, null, 2)}</pre>
-      <button onClick={onClick}>sign in </button>
-      <button onClick={() => signOut(auth)}>sign out</button>
-    </>
+      <Button onClick={onClick}>Sign in</Button>
+      <Button onClick={onClick} variant={"outlined"}>
+        Sign in
+      </Button>
+      <Button onClick={() => signOut(auth)} variant={"contained"}>
+        Sign out
+      </Button>
+    </Flexbox>
   );
 }

@@ -1,0 +1,50 @@
+.colorPrimary {
+  --use-color: var(--color-primary);
+}
+
+.colorSecondary {
+  --use-color: var(--color-secondary);
+}
+
+.button {
+  font-family: var(--font-sans);
+  border-radius: var(--border-radius);
+  padding: var(--button-padding-vertical) var(--button-padding-horizontal);
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(80%);
+}
+
+.outlinedButton {
+  background-color: transparent;
+  border: var(--button-border-width) solid var(--use-color);
+  color: var(--use-color);
+}
+
+.textButton {
+  background-color: transparent;
+  color: var(--use-color);
+  border-color: transparent;
+}
+
+.textButton:hover::before,
+.outlinedButton:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: calc(-1 * var(--button-border-width));
+  top: calc(-1 * var(--button-border-width));
+  border-radius: var(--border-radius);
+  border: var(--button-border-width) solid var(--use-color);
+  background-color: var(--use-color);
+  opacity: 0.1;
+}
+
+.containedButton {
+  background-color: var(--use-color);
+  border: var(--button-border-width) solid var(--use-color);
+  color: var(--text-on-primary);
+}
