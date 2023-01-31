@@ -1,0 +1,8 @@
+.text {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.bold {
+  font-weight: 600;
+}

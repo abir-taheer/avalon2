@@ -1,15 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 import { signInAnonymously, signOut } from "@firebase/auth";
 import { auth } from "@/firebase";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth/AuthContext";
-import { Button } from "@/components/button/Button";
-import { Flexbox } from "@/components/flexbox/Flexbox";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Button } from "@/components/ui/button/Button";
+import { Flexbox } from "@/components/ui/flexbox/Flexbox";
+import { Container } from "@/components/ui/container/Container";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -19,15 +15,24 @@ export default function Home() {
   };
 
   return (
-    <Flexbox direction={"column"}>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <Button onClick={onClick}>Sign in</Button>
-      <Button onClick={onClick} variant={"outlined"}>
-        Sign in
-      </Button>
-      <Button onClick={() => signOut(auth)} variant={"contained"}>
-        Sign out
-      </Button>
-    </Flexbox>
+    <Container>
+      <Flexbox>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+
+        <Button onClick={onClick}>Sign in</Button>
+        <Button onClick={onClick} disabled>
+          Sign in
+        </Button>
+        <Button onClick={onClick} variant={"outlined"} disabled>
+          Sign in
+        </Button>
+        <Button onClick={() => signOut(auth)} variant={"contained"}>
+          SIGN OUT
+        </Button>
+        <Button onClick={() => signOut(auth)} variant={"contained"} disabled>
+          SIGN OUT
+        </Button>
+      </Flexbox>
+    </Container>
   );
 }

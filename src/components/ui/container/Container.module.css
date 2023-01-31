@@ -1,0 +1,16 @@
+.large {
+  --container-width: 1000px;
+}
+
+.medium {
+  --container-width: 800px;
+}
+
+.small {
+  --container-width: 600px;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}

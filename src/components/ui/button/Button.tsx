@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, useId } from "react";
-import styles from "./Button.module.css";
+import styles from "src/components/ui/button/Button.module.css";
 import classNames from "classnames";
 
 export type ButtonProps = DetailedHTMLProps<
@@ -14,6 +14,8 @@ export const Button = (props: ButtonProps) => {
   const variant = props.variant ?? "text";
   const color = props.color ?? "primary";
 
+  const onClick = props.disabled ? undefined : props.onClick;
+
   return (
     <button
       className={classNames(
@@ -23,12 +25,13 @@ export const Button = (props: ButtonProps) => {
           [styles.textButton]: variant === "text",
           [styles.colorPrimary]: color === "primary",
           [styles.colorSecondary]: color === "secondary",
+          [styles.disabledButton]: props.disabled,
         },
         styles.button,
         props.className
       )}
       id={props.id}
-      onClick={props.onClick}
+      onClick={onClick}
     >
       {props.children}
     </button>

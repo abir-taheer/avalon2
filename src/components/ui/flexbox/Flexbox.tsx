@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
-import styles from "./Flexbox.module.css";
+import styles from "src/components/ui/flexbox/Flexbox.module.css";
 import classNames from "classnames";
 import { UIComponentProps } from "@/types/components";
 
 export type FlexboxProps = {
-  children: ReactNode;
   direction?: "row" | "column";
   justifyContent?:
     | "flex-start"

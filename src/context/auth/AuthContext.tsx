@@ -34,7 +34,18 @@ export type AuthContextProviderProps = {
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [authUser, setAuthUser] = useState<null | User>(null);
-  const user = useRealtimeUser(authUser?.uid ?? "", { skip: !authUser });
+
+  const uid = useMemo(() => authUser?.uid ?? "", [authUser]);
+
+  // We need to memoize to prevent infinite re-renders
+  const options = useMemo(
+    () => ({
+      skip: typeof authUser?.uid !== "string",
+    }),
+    [authUser]
+  );
+
+  const user = useRealtimeUser(uid, options);
   const isSignedIn = useMemo(() => !!user, [user]);
 
   // Wrap it in memo to preserve reference and prevent excessive re-renders
