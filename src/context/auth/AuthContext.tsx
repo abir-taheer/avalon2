@@ -78,9 +78,9 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         uid,
       });
 
-      setAuthUser(nextUser);
+      await onDisconnect(Ref).update({ active: false });
 
-      return onDisconnect(Ref).update({ active: false });
+      setAuthUser(nextUser);
     });
   }, []);
 
