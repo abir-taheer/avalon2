@@ -1,23 +1,18 @@
-import { Navbar } from "@/components/ui/navbar/Navbar";
-import { Text } from "@/components/ui/text/Text";
-import { Flexbox } from "@/components/ui/flexbox/Flexbox";
-import { Button } from "@/components/ui/button/Button";
-import { Container } from "@/components/ui/container/Container";
-import styles from "./Navigation.module.css";
+import { AppBar, Button, Container, Stack, Typography } from "@mui/material";
 
 export type NavigationProps = {};
 
 export const Navigation = (props: NavigationProps) => {
   return (
-    <Navbar className={styles.navbar}>
+    <AppBar>
       <Container>
-        <Flexbox direction={"row"} alignItems={"center"}>
+        <Stack direction={"row"} alignItems={"center"}>
           <div style={{ flexGrow: 1 }}>
-            <Text bold>Avalon & Friends</Text>
+            <Typography fontWeight={"bold"}>Avalon & Friends</Typography>
           </div>
           <Button variant={"outlined"}>Sign Out</Button>
-        </Flexbox>
+        </Stack>
       </Container>
-    </Navbar>
+    </AppBar>
   );
 };

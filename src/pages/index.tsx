@@ -1,4 +1,3 @@
-import { Inter } from "@next/font/google";
 import { signInAnonymously, signOut } from "@firebase/auth";
 import { auth } from "@/firebase";
 import { useContext } from "react";
