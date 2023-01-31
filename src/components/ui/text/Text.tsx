@@ -11,15 +11,18 @@ export type TextProps = {
 export const Text = (props: TextProps) => {
   const component = props.component ?? "p";
 
-  return createElement(component, {
-    className: classNames(
-      {
-        [styles.bold]: props.bold,
-      },
-      styles.text,
-      props.className
-    ),
-    style: props.style,
-    children: props.children,
-  });
+  return createElement(
+    component,
+    {
+      className: classNames(
+        {
+          [styles.bold]: props.bold,
+        },
+        styles.text,
+        props.className
+      ),
+      style: props.style,
+    },
+    props.children
+  );
 };
