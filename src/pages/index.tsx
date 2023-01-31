@@ -3,9 +3,7 @@ import { signInAnonymously, signOut } from "@firebase/auth";
 import { auth } from "@/firebase";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth/AuthContext";
-import { Button } from "@/components/ui/button/Button";
-import { Flexbox } from "@/components/ui/flexbox/Flexbox";
-import { Container } from "@/components/ui/container/Container";
+import { Button, Container, Stack } from "@mui/material";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -16,7 +14,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Flexbox>
+      <Stack>
         <pre>{JSON.stringify(user, null, 2)}</pre>
 
         <Button onClick={onClick}>Sign in</Button>
@@ -32,7 +30,7 @@ export default function Home() {
         <Button onClick={() => signOut(auth)} variant={"contained"} disabled>
           SIGN OUT
         </Button>
-      </Flexbox>
+      </Stack>
     </Container>
   );
 }
