@@ -15,6 +15,7 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "faker-en": "^2.5.1",
     "firebase-admin": "^11.5.0",
     "next": "13.1.6",
     "react": "18.2.0",
