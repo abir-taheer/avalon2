@@ -6,7 +6,7 @@ import { useRealtimeUser } from "@/hooks/realtime/useRealtimeUser";
 import { onDisconnect, ref, set, update } from "firebase/database";
 import { firstName } from "faker-en/person/firstName";
 import { getDefaultPhotoURL } from "@/utils/user/getDefaultPhotoURL";
-import { useEditDisplayNameDialog } from "@/components/dialog/EditDisplayNameDialog";
+import { useEditDisplayNameDialog } from "@/components/dialog/useEditDisplayNameDialog";
 
 interface Authenticated {
   isSignedIn: true;
