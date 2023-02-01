@@ -6,6 +6,7 @@ import { useRealtimeUser } from "@/hooks/realtime/useRealtimeUser";
 import { onDisconnect, ref, set, update } from "firebase/database";
 import { firstName } from "faker-en/person/firstName";
 import { getDefaultPhotoURL } from "@/utils/user/getDefaultPhotoURL";
+import { useEditDisplayNameDialog } from "@/components/dialog/useEditDisplayNameDialog";
 
 interface Authenticated {
   isSignedIn: true;
@@ -34,6 +35,7 @@ export type AuthContextProviderProps = {
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [authUser, setAuthUser] = useState<null | User>(null);
+  const promptName = useEditDisplayNameDialog();
 
   const uid = useMemo(() => authUser?.uid ?? "", [authUser]);
 
@@ -76,7 +78,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       let { uid, photoURL, displayName } = nextUser;
 
       if (!displayName) {
-        displayName = firstName();
+        const promptedName = await promptName({ initialValue: "" });
+        displayName = promptedName?.displayName ?? firstName();
       }
 
       if (!photoURL) {

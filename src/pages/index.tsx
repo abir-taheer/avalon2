@@ -3,9 +3,11 @@ import { auth } from "@/firebase";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth/AuthContext";
 import { Button, Container, Stack } from "@mui/material";
+import { useEditDisplayNameDialog } from "@/components/dialog/useEditDisplayNameDialog";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
+  const edit = useEditDisplayNameDialog();
 
   const onClick = () => {
     signInAnonymously(auth).then(console.log);
@@ -26,8 +28,11 @@ export default function Home() {
         <Button onClick={() => signOut(auth)} variant={"contained"}>
           SIGN OUT
         </Button>
-        <Button onClick={() => signOut(auth)} variant={"contained"} disabled>
-          SIGN OUT
+        <Button
+          onClick={() => edit({ initialValue: "" })}
+          variant={"contained"}
+        >
+          Edit
         </Button>
       </Stack>
     </Container>
