@@ -39,7 +39,7 @@ export const useDocWithSnapshot = <T>({
     );
 
     return unsubscribe;
-  });
+  }, [skip, ref]);
 
   return { data, isLoading, error };
 };

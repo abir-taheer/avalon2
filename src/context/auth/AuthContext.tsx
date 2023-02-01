@@ -103,7 +103,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
       setAuthUser(nextUser);
     });
-  }, []);
+  }, [promptName]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
