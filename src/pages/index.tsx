@@ -3,7 +3,7 @@ import { auth } from "@/firebase";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth/AuthContext";
 import { Button, Container, Stack } from "@mui/material";
-import { useEditDisplayNameDialog } from "@/components/dialog/useEditDisplayNameDialog";
+import { useEditDisplayNameDialog } from "@/components/dialog/EditDisplayNameDialog";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
