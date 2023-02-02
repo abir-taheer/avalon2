@@ -1,8 +1,7 @@
-import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 import { useAuth } from "@/hooks/auth";
-import { SignOutButton } from "@/components/auth";
 
 const useStyles = makeStyles()({
   AppBar: {
@@ -31,8 +30,6 @@ export const Navbar = () => {
               Avalon & Friends
             </Typography>
           </Link>
-
-          {isSignedIn && <SignOutButton />}
         </Toolbar>
       </Container>
     </AppBar>
